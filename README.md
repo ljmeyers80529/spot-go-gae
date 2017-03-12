@@ -21,7 +21,7 @@ This is based on zmb3's spotify go code API interface.
 
 To install the library, simply
 
-`go get github.com/lmeyers80529/spotify`
+`go get github.com/ljmeyers80529/spotify`
 
 ## Authentication
 
