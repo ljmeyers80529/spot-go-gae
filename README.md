@@ -1,5 +1,7 @@
 
 Spotify test code to operat under the google appengine environment.
+
+Note: ************* This is under development and is experimental and should not be used. **************
 =======
 
 [![GoDoc](https://godoc.org/github.com/zmb3/spotify?status.svg)](http://godoc.org/github.com/zmb3/spotify)
