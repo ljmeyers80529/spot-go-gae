@@ -23,7 +23,7 @@ This is based on zmb3's spotify go code API interface.
 
 To install the library, simply
 
-`go get github.com/ljmeyers80529/spot-go-gae
+go get -u -v github.com/ljmeyers80529/spot-go-gae
 
 ## Authentication
 
