@@ -111,7 +111,7 @@ type ArtistInfo struct {
 
 // CurrentUserRecentTracks returns the user's most recently played tracks in a single PlayHistory
 // object. It supports up to 50 tracks in a single call with only the 50 most recent tracks available
-// for each user.
+// for each user. Requires authorization under user-read-recently-played scope.
 func (c *Client) CurrentUserRecentTracks(total int) (*PlayHistory, error) {
 	if total <= 0 || total > 50 {
 		return nil, errors.New("CurrentUserRecentTracks supports up to 50 tracks per call")
@@ -140,6 +140,7 @@ func (c *Client) CurrentUserRecentTracks(total int) (*PlayHistory, error) {
 // It supports up to 50 tracks in a single call with only the top 50 tracks available
 // for each user. It also supports three different time ranges from where to fetch the
 // tracks. Valid ranges include "short" (4 weeks), "medium" (6 months), and "long" (years).
+// Requires authorization under user-top-read scope.
 func (c *Client) CurrentUserTopTracks(total int, time string) (*TopTracks, error) {
 	if total <= 0 || total > 50 {
 		return nil, errors.New("CurrentUserTopTracks supports up to 50 tracks per call")
@@ -171,6 +172,7 @@ func (c *Client) CurrentUserTopTracks(total int, time string) (*TopTracks, error
 // It supports up to 50 artists in a single call with only the top 50 artists available
 // for each user. It also supports three different time ranges from where to fetch the
 // artists. Valid ranges include "short" (4 weeks), "medium" (6 months), and "long" (years).
+// Requires authorization under user-top-read scope.
 func (c *Client) CurrentUserTopArtists(total int, time string) (*TopArtists, error) {
 	if total <= 0 || total > 50 {
 		return nil, errors.New("CurrentUserTopArtists supports up to 50 tracks per call")
