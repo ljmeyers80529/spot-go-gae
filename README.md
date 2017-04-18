@@ -1,5 +1,5 @@
 
-Spotify test code to operat under the google appengine environment.
+Spotify test code to operate under the google appengine environment.
 
 Note: ************* This is under development and is experimental and should not be used. **************
 =======
