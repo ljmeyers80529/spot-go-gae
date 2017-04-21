@@ -4,9 +4,7 @@ Spotify test code to operate under the google appengine environment.
 Note: ************* This is under development and is experimental and should not be used. **************
 =======
 
-[![GoDoc](https://godoc.org/github.com/zmb3/spotify?status.svg)](http://godoc.org/github.com/zmb3/spotify)
-[![Build status](https://ci.appveyor.com/api/projects/status/1nr9vv0jqq438nj2?svg=true)](https://ci.appveyor.com/project/zmb3/spotify)
-[![Build Status](https://travis-ci.org/zmb3/spotify.svg)](https://travis-ci.org/zmb3/spotify)
+[![GoDoc](https://godoc.org/github.com/ljmeyers80529/spotify?status.svg)](http://godoc.org/github.com/ljmeyers80529/spotify)
 
 This is a Go wrapper for working with Spotify's
 [Web API](https://developer.spotify.com/web-api/).
@@ -18,6 +16,8 @@ By using this library you agree to Spotify's
 [Developer Terms of Use](https://developer.spotify.com/developer-terms-of-use/).
 
 This is based on zmb3's spotify go code API interface.
+
+Henry Sarabia extended the API to include Personalization and Audio Analysis functionality.
 
 ## Installation
 
