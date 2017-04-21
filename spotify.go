@@ -139,6 +139,10 @@ type Options struct {
 	// Offset is the index of the first item to return.  Use it
 	// with Limit to get the next set of items.
 	Offset *int
+	// Timerange is a range of time from which to return results
+	// from in certain API calls. The API is limited to three choices
+	// consisting of "short", "medium", and "long".
+	Timerange *string
 }
 
 // NewReleasesOpt is like NewReleases, but it accepts optional parameters

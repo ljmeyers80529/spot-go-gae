@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
+	"net/url"
 	"strconv"
 )
 
@@ -139,17 +140,21 @@ func (c *Client) CurrentUserRecentTracks(total int) (*PlayHistory, error) {
 // CurrentUserTopTracks returns the user's top tracks in a single TopTracks object.
 // It supports up to 50 tracks in a single call with only the top 50 tracks available
 // for each user. It also supports three different time ranges from where to fetch the
-// tracks. Valid ranges include "short" (4 weeks), "medium" (6 months), and "long" (years).
-// Requires authorization under user-top-read scope.
-func (c *Client) CurrentUserTopTracks(total int, time string) (*TopTracks, error) {
-	if total <= 0 || total > 50 {
-		return nil, errors.New("CurrentUserTopTracks supports up to 50 tracks per call")
-	}
-	if time != "short" && time != "medium" && time != "long" {
-		return nil, errors.New("CurrentUserTopTracks supports \"short\", \"medium\", and \"long\" time ranges")
+// tracks. Valid ranges include "short_term" (4 weeks), "medium_term" (6 months), and
+// "long_term" (years). Requires authorization under user-top-read scope.
+func (c *Client) CurrentUserTopTracks(opt *Options) (*TopTracks, error) {
+	v := url.Values{}
+
+	if opt != nil {
+		if opt.Limit != nil {
+			v.Set("limit", strconv.Itoa(*opt.Limit))
+		}
+		if opt.Timerange != nil {
+			v.Set("time_range", *opt.Timerange)
+		}
 	}
 
-	spotifyURL := baseAddress + "me/top/tracks?time_range=" + time + "_term&limit=" + strconv.Itoa(total)
+	spotifyURL := baseAddress + "me/top/tracks?" + v.Encode()
 	resp, err := c.http.Get(spotifyURL)
 	if err != nil {
 		return nil, err
@@ -171,17 +176,21 @@ func (c *Client) CurrentUserTopTracks(total int, time string) (*TopTracks, error
 // CurrentUserTopArtists returns the user's top artists in a single TopArtists object.
 // It supports up to 50 artists in a single call with only the top 50 artists available
 // for each user. It also supports three different time ranges from where to fetch the
-// artists. Valid ranges include "short" (4 weeks), "medium" (6 months), and "long" (years).
-// Requires authorization under user-top-read scope.
-func (c *Client) CurrentUserTopArtists(total int, time string) (*TopArtists, error) {
-	if total <= 0 || total > 50 {
-		return nil, errors.New("CurrentUserTopArtists supports up to 50 tracks per call")
-	}
-	if time != "short" && time != "medium" && time != "long" {
-		return nil, errors.New("CurrentUserTopArtists supports \"short\", \"medium\", and \"long\" time ranges")
+// artists. Valid ranges include "short_term" (4 weeks), "medium_term" (6 months), and
+// "long_term" (years). Requires authorization under user-top-read scope.
+func (c *Client) CurrentUserTopArtists(opt *Options) (*TopArtists, error) {
+	v := url.Values{}
+
+	if opt != nil {
+		if opt.Limit != nil {
+			v.Set("limit", strconv.Itoa(*opt.Limit))
+		}
+		if opt.Timerange != nil {
+			v.Set("time_range", *opt.Timerange)
+		}
 	}
 
-	spotifyURL := baseAddress + "me/top/artists?time_range=" + time + "_term&limit=" + strconv.Itoa(total)
+	spotifyURL := baseAddress + "me/top/artists?" + v.Encode()
 	resp, err := c.http.Get(spotifyURL)
 	if err != nil {
 		return nil, err
