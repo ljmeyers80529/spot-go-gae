@@ -9,7 +9,7 @@ import (
 	"strconv"
 )
 
-// PlayHistory provides a user's play history
+// PlayHistory contains a user's play history.
 type PlayHistory struct {
 	Items    []HistoryItem `json:"items"`
 	Next     string        `json:"next"`
@@ -25,14 +25,14 @@ type TrackContext struct {
 	URI          URI               `json:"uri"`
 }
 
-// HistoryItem contains the track and its metadata
+// HistoryItem contains the track and its metadata.
 type HistoryItem struct {
 	Track    SimpleTrack  `json:"track"`
 	PlayedAt string       `json:"played_at"`
 	Context  TrackContext `json:"context"`
 }
 
-// TopTracks contains both a list of tracks with their relevant data and object metadata
+// TopTracks contains both a list of tracks and paging information.
 type TopTracks struct {
 	Items    []TrackItem `json:"items"`
 	Total    int         `json:"total"`
@@ -43,7 +43,7 @@ type TopTracks struct {
 	Next     string      `json:"next"`
 }
 
-// TrackItem contains the album, artist, and other information for a particular track
+// TrackItem contains basic info about a track.
 type TrackItem struct {
 	Album        AlbumInfo         `json:"album"`
 	Artists      []ArtistInfo      `json:"artists"`
@@ -63,7 +63,7 @@ type TrackItem struct {
 	URI          URI               `json:"uri"`
 }
 
-// AlbumInfo contains album information and images for a particular album
+// AlbumInfo contains album information for a particular album.
 type AlbumInfo struct {
 	AlbumType    string            `json:"album_type"`
 	ExternalURLs map[string]string `json:"external_urls"`
@@ -75,7 +75,7 @@ type AlbumInfo struct {
 	URI          URI               `json:"uri"`
 }
 
-// TopArtists contains both a list of artists with their relevant data and paging information
+// TopArtists contains both a list of artists and paging information.
 type TopArtists struct {
 	Items    []ArtistItem `json:"items"`
 	Total    int          `json:"total"`
@@ -86,7 +86,7 @@ type TopArtists struct {
 	Next     string       `json:"next"`
 }
 
-// ArtistItem contains the genre, images, and other information for a particular artist
+// ArtistItem contains extensive info about an artist.
 type ArtistItem struct {
 	ExternalURLs map[string]string `json:"external_urls"`
 	Followers    Followers         `json:"followers"`
@@ -100,7 +100,7 @@ type ArtistItem struct {
 	URI          URI               `json:"uri"`
 }
 
-// ArtistInfo contains artist information and object metadata
+// ArtistInfo contains basic artist information for a particular artist.
 type ArtistInfo struct {
 	ExternalURLs map[string]string `json:"external_urls"`
 	Endpoint     string            `json:"href"`
